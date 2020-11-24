@@ -24,7 +24,7 @@ namespace OrderSystem
 
         private void Awake()
         {
-            parent = this.transform.FindChild("Content");
+            parent = this.transform.Find("Content");
             var prefab = Resources.Load<GameObject>("Prefabs/UI/ClientItem");
             objectPool = new ObjectPool<ClientItemView>(prefab , "ClientPool");
         }
@@ -49,7 +49,7 @@ namespace OrderSystem
         {
             for (int i = 0; i < clients.Count; i++)
             {
-                if (clients[i].client.id.Equals(client.id))
+                if (null!=clients[i].client&&clients[i].client.id.Equals(client.id))
                 {
                     clients[i].InitClient(client);
                     return;

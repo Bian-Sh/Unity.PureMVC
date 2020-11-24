@@ -26,7 +26,7 @@ namespace OrderSystem
 
         private void Awake()
         {
-            parent = this.transform.FindChild("Content");
+            parent = this.transform.Find("Content");
             var prefab = Resources.Load<GameObject>("Prefabs/UI/WaiterItem");
             objectPool = new ObjectPool<WaiterItemView>(prefab , "WaiterPool");
         }
@@ -41,7 +41,7 @@ namespace OrderSystem
             {
                 this.waiters[i].transform.SetParent(parent);
                 var item = waiters[i];
-                this.waiters[i].transform.FindChild("Id").GetComponent<Text>().text = item.ToString();
+                this.waiters[i].transform.Find("Id").GetComponent<Text>().text = item.ToString();
                 Color color = Color.white;
                 if ( item.state.Equals(0) )
                     color = Color.green;

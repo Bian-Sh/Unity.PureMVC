@@ -9,14 +9,12 @@ namespace PureMVC.Patterns
 
     public class Observer : IObserver
     {
-        private object m_notifyContext;
-        private string m_notifyMethod;
         protected readonly object m_syncRoot = new object();
 
         public Observer(string notifyMethod, object notifyContext)
         {
-            this.m_notifyMethod = notifyMethod;
-            this.m_notifyContext = notifyContext;
+            this.NotifyMethod = notifyMethod;
+            this.NotifyContext = notifyContext;
         }
 
         public bool CompareNotifyContext(object obj)
@@ -27,29 +25,9 @@ namespace PureMVC.Patterns
             }
         }
 
-        public object NotifyContext
-        {
-            private get
-            {
-                return this.m_notifyContext;
-            }
-            set
-            {
-                this.m_notifyContext = value;
-            }
-        }
+        public object NotifyContext { private get; set; }
 
-        public string NotifyMethod
-        {
-            private get
-            {
-                return this.m_notifyMethod;
-            }
-            set
-            {
-                this.m_notifyMethod = value;
-            }
-        }
+        public string NotifyMethod { private get; set; }
 
         public void NotifyObserver(INotification notification)
         {

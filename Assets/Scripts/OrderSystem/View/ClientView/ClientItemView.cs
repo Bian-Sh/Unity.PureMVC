@@ -19,7 +19,7 @@ namespace OrderSystem
 
         private void Awake()
         {
-            text = transform.FindChild("Id").GetComponent<Text>();
+            text = transform.Find("Id").GetComponent<Text>();
             image = transform.GetComponent<Image>();
         }
 

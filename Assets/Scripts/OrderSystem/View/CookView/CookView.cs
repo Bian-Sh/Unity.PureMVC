@@ -23,7 +23,7 @@ namespace OrderSystem
 
         private void Awake()
         {
-            parent = this.transform.FindChild("Content");
+            parent = this.transform.Find("Content");
             var prefab = Resources.Load<GameObject>("Prefabs/UI/CookItem");
             objectPool = new ObjectPool<CookItemView>(prefab , "CookPool");
         }
@@ -39,7 +39,7 @@ namespace OrderSystem
             {
                 this.cooks[i].transform.SetParent(parent);
                 var item = cooks[i];
-                this.cooks[i].transform.FindChild("Id").GetComponent<Text>().text = item.ToString();
+                this.cooks[i].transform.Find("Id").GetComponent<Text>().text = item.ToString();
                 Color color = Color.white;
                 if ( item.state.Equals(0) )
                     color = Color.green;

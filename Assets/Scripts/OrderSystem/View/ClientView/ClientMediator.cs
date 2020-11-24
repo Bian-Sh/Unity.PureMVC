@@ -54,20 +54,20 @@ namespace OrderSystem
                 case OrderSystemEvent.CALL_WAITER:
                     ClientItem client = notification.Body as ClientItem;
                     if(null == client)
-                        throw new Exception("对应桌号顾客不存在，请核对！");
+                        Debug.LogError("对应桌号顾客不存在，请核对！");
                     Debug.Log(client.id + " 号桌顾客呼叫服务员 , 索要菜单 ");
                     break;
                 case OrderSystemEvent.ORDER: 
                     Order order1 = notification.Body as Order;
                     if(null == order1)
-                        throw new Exception("order1 is null ,please check it!");
+                        Debug.LogError("order1 is null ,please check it!");
                     order1.client.state++;
                     View.UpdateState(order1.client);
                     break;
                 case OrderSystemEvent.PAY:
                     Order finishOrder = notification.Body as Order;
                     if ( null == finishOrder )
-                        throw new Exception("finishOrder is null ,please check it!");
+                        Debug.LogError("finishOrder is null ,please check it!");
                     finishOrder.client.state++;
                     View.UpdateState(finishOrder.client);
                     SendNotification(OrderSystemEvent.GET_PAY, finishOrder);

@@ -23,11 +23,11 @@ namespace OrderSystem
 
         private void Awake( )
         {
-            parent = this.transform.FindChild("Content");
+            parent = this.transform.Find("Content");
             var prefab = Resources.Load<GameObject>("Prefabs/UI/MenuItem");
             objectPool = new ObjectPool<MenuItemView>(prefab , "MenuPool");
-            transform.FindChild("SubmitButton").GetComponent<Button>().onClick.AddListener(() => { Submit(indexOrder); });
-            transform.FindChild("CancelButton").GetComponent<Button>().onClick.AddListener(CancelMenu);
+            transform.Find("SubmitButton").GetComponent<Button>().onClick.AddListener(() => { Submit(indexOrder); });
+            transform.Find("CancelButton").GetComponent<Button>().onClick.AddListener(CancelMenu);
         }
 
         public void UpdateMenu( IList<MenuItem> menus )
